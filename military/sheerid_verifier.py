@@ -220,73 +220,41 @@ class SheerIDVerifier:
                 raise Exception(f"Gagal Step 2 (HTTP {status}): {data}")
             
             current_step = data.get("currentStep")
-            error_ids = data.get("errorIds", [])
-            logger.info(f"✅ Step 2 Response: {current_step} | Errors: {error_ids if error_ids else 'None'}")
+            logger.info(f"Respon Langkah 2: {current_step}")
 
-            # Handle Success
+            # STOP TOTAL jika sukses, emailLoop, atau pending
             if current_step == "success":
-                return {"success": True, "message": "Instant Verification Successful!", "redirect_url": data.get("redirectUrl")}
+                return {"success": True, "message": "Verification Successful!", "redirect_url": data.get("redirectUrl")}
             
-            # Handle Email Loop - TRY TO SKIP FIRST (like SSO)
             if current_step == "emailLoop":
-                logger.warning("⚠️ Masuk emailLoop - Mencoba skip dengan DELETE request...")
-                time.sleep(random.uniform(2, 4))
-                
-                try:
-                    skip_data, skip_status = self._request("DELETE", "step/emailLoop")
-                    
-                    if skip_status in [200, 204]:
-                        # Berhasil skip emailLoop!
-                        current_step = skip_data.get("currentStep", "docUpload") if isinstance(skip_data, dict) else "docUpload"
-                        logger.info(f"✅ EmailLoop skipped successfully! Current: {current_step}")
-                        time.sleep(random.uniform(2, 3))
-                    else:
-                        # Gagal skip emailLoop, TAPI coba force docUpload anyway
-                        logger.warning(f"⚠️ Cannot skip emailLoop (HTTP {skip_status}), trying force docUpload...")
-                        current_step = "docUpload"  # Force proceed
-                        time.sleep(random.uniform(2, 3))
-                except Exception as e:
-                    # Error saat coba skip, force proceed ke docUpload anyway
-                    logger.warning(f"⚠️ Exception while skipping emailLoop: {e}, trying force docUpload...")
-                    current_step = "docUpload"
-                    time.sleep(random.uniform(2, 3))
-
-            # Handle Error State (notApproved, noMatch, etc) - FALLBACK TO DOCUPLOAD
-            if current_step == "error":
-                fallback_errors = ["notApproved", "noMatch", "notFound", "insufficientData"]
-                can_upload = any(err in error_ids for err in fallback_errors)
-                
-                if can_upload:
-                    logger.info(f"⚠️ Instant verification failed ({', '.join(error_ids)}), falling back to document upload...")
-                    current_step = "docUpload"  # Force proceed to upload
-                else:
-                    raise Exception(f"Verification error: {', '.join(error_ids)}")
-            
-            # Skip SSO if present (like other verifiers)
-            if current_step in ["sso", "collectInactiveMilitaryPersonalInfo"]:
-                logger.info("Langkah 2.5: Skip SSO verification...")
-                try:
-                    data, status = self._request("DELETE", "step/sso")
-                    if status == 200 or status == 204:
-                        current_step = data.get("currentStep", current_step) if isinstance(data, dict) else current_step
-                        logger.info(f"✅ SSO skipped. Current: {current_step}")
-                    else:
-                        logger.warning(f"SSO skip returned {status}, continuing...")
-                    time.sleep(random.uniform(2, 3))
-                except Exception as e:
-                    logger.warning(f"Skip SSO failed (may not exist): {e}")
-                    # Continue anyway, SSO might not be required
-
-            # Validate we can proceed to upload
-            if current_step not in ["docUpload", "error"]:
+                logger.info("🛑 Status emailLoop terdeteksi. Menghentikan proses untuk mencegah rate limit.")
                 return {
-                    "success": False,
-                    "message": f"Unexpected step: {current_step}. Cannot upload document.",
+                    "success": True, 
+                    "pending": True,
+                    "message": "Email Verifikasi Terkirim! Cek inbox email Anda sekarang. Jangan request ulang dalam waktu dekat.",
+                    "verification_id": self.verification_id
+                }
+            
+            if current_step == "pending":
+                 logger.info("🛑 Status pending terdeteksi. Menghentikan proses.")
+                 return {
+                    "success": True, 
+                    "pending": True,
+                    "message": "Verifikasi sedang ditinjau (Pending). Silakan tunggu.",
                     "verification_id": self.verification_id
                 }
 
-            # 5. Langkah 3: Upload Document
-            logger.info("Langkah 3: Request document upload slot...")
+            # Hanya lanjut ke Upload JIKA statusnya docUpload atau error (no match)
+            if current_step != "docUpload" and "error" not in str(current_step):
+                 logger.warning(f"⚠️ Status {current_step} tidak mendukung upload dokumen. Berhenti.")
+                 return {
+                    "success": False,
+                    "message": f"Status: {current_step}. Tidak bisa lanjut upload.",
+                    "verification_id": self.verification_id
+                }
+
+            # 5. Langkah 3: Upload Dokumen
+            logger.info("Langkah 3: Meminta slot upload dokumen...")
             time.sleep(random.uniform(3, 5))
             
             step3_body = {
