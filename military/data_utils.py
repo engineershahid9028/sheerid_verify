@@ -41,16 +41,8 @@ def generate_military_identity():
             "entry_date": "2011-05-15"
         }
 
-    # 🔒 ALWAYS USE JAMES FLEMING (Air Force Captain)
-    person = None
-    for candidate in candidates:
-        if 'James' in candidate['name'] and 'Fleming' in candidate['name']:
-            person = candidate
-            break
-    
-    # Fallback jika James Fleming tidak ditemukan
-    if not person:
-        person = random.choice(candidates)
+    # Pilih veteran secara RANDOM
+    person = random.choice(candidates)
     full_name = person['name'].split()
     first_name = full_name[0]
     
