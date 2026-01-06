@@ -1,0 +1,286 @@
+
+
+url = https://services.sheerid.com/verify/690415d58971e73ca187d8c9/?verificationId=695c9e6b31835a5e0aa082ee
+
+
+============================================================
+DATA 1: ACTIVE DUTY
+============================================================
+
+=== STEP 1: DROPDOWN SELECTION (Active Duty) ===
+Action:
+Select "Active Duty" from Dropdown Menu (No Submit Clicked)
+
+
+Response JSON:
+{
+    "verificationId": "695c9e6b31835a5e0aa082ee",
+    "currentStep": "collectActiveMilitaryPersonalInfo",
+    "errorIds": [],
+    "segment": "military",
+    "subSegment": "activeDuty",
+    "locale": "en-US",
+    "country": null,
+    "created": 1767677547467,
+    "updated": 1767678831827,
+    "submissionUrl": "https://services.sheerid.com/rest/v2/verification/695c9e6b31835a5e0aa082ee/step/collectActiveMilitaryPersonalInfo",
+    "instantMatchAttempts": 0
+}
+
+=== STEP 2: ORGANIZATION LIST FETCH (Active Duty) ===
+Action:
+Network request generated after selecting Active Duty
+
+Request URL (Clicked in Network):
+https://orgsearch.sheerid.net/rest/organization/search?excludedIds=8352%2C8353%2C4082&country=US&type=MILITARY&accountId=67d1dd27d7732a41eb64d141&name=&tags=ACTIVE_DUTY
+
+Response JSON:
+[
+    {
+        "id": 4070,
+        "idExtended": "4070",
+        "name": "Army",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4073,
+        "idExtended": "4073",
+        "name": "Air Force",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4072,
+        "idExtended": "4072",
+        "name": "Navy",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4071,
+        "idExtended": "4071",
+        "name": "Marine Corps",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4074,
+        "idExtended": "4074",
+        "name": "Coast Guard",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4544268,
+        "idExtended": "4544268",
+        "name": "Space Force",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    }
+]
+
+
+============================================================
+DATA 2: VETERAN / RETIREE
+============================================================
+
+=== STEP 1: DROPDOWN SELECTION (Military Veteran or Retiree) ===
+Action:
+Select "Military Veteran or Retiree" from Dropdown Menu (No Submit Clicked)
+
+Request URL (Clicked in Network):
+https://services.sheerid.com/rest/v2/verification/695b20f95047610fe9f90ad4/step/collectMilitaryStatus
+
+Response JSON:
+{
+    "verificationId": "695b20f95047610fe9f90ad4",
+    "currentStep": "collectInactiveMilitaryPersonalInfo",
+    "errorIds": [],
+    "segment": "military",
+    "subSegment": "veteran",
+    "locale": "en-US",
+    "country": null,
+    "created": 1767579897150,
+    "updated": 1767679795725,
+    "submissionUrl": "https://services.sheerid.com/rest/v2/verification/695b20f95047610fe9f90ad4/step/collectInactiveMilitaryPersonalInfo",
+    "instantMatchAttempts": 0
+}
+
+=== STEP 2: ORGANIZATION LIST FETCH (Veteran) ===
+Action:
+Network request generated after selecting Veteran status
+
+Request URL (Clicked in Network):
+https://orgsearch.sheerid.net/rest/organization/search?excludedIds=8352%2C8353%2C4082&country=US&type=MILITARY&accountId=67d1dd27d7732a41eb64d141&name=&tags=VETERAN
+
+Response JSON:
+[
+    {
+        "id": 4070,
+        "idExtended": "4070",
+        "name": "Army",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4073,
+        "idExtended": "4073",
+        "name": "Air Force",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4072,
+        "idExtended": "4072",
+        "name": "Navy",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4071,
+        "idExtended": "4071",
+        "name": "Marine Corps",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4074,
+        "idExtended": "4074",
+        "name": "Coast Guard",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4544268,
+        "idExtended": "4544268",
+        "name": "Space Force",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    }
+]
+
+
+============================================================
+DATA 3: RESERVIST / NATIONAL GUARD
+============================================================
+
+=== STEP 1: DROPDOWN SELECTION (Reservist or National Guard) ===
+Action:
+Select "Reservist or National Guard" from Dropdown Menu (No Submit Clicked)
+
+Request URL (Clicked in Network):
+https://services.sheerid.com/rest/v2/verification/695b20f95047610fe9f90ad4/step/collectMilitaryStatus
+
+Response JSON:
+{
+    "verificationId": "695b20f95047610fe9f90ad4",
+    "currentStep": "collectActiveMilitaryPersonalInfo",
+    "errorIds": [],
+    "segment": "military",
+    "subSegment": "reservist",
+    "locale": "en-US",
+    "country": null,
+    "created": 1767579897150,
+    "updated": 1767679970098,
+    "submissionUrl": "https://services.sheerid.com/rest/v2/verification/695b20f95047610fe9f90ad4/step/collectActiveMilitaryPersonalInfo",
+    "instantMatchAttempts": 0
+}
+
+=== STEP 2: ORGANIZATION LIST FETCH (Reservist) ===
+Action:
+Network request generated after selecting Reservist status
+
+Request URL (Clicked in Network):
+https://orgsearch.sheerid.net/rest/organization/search?excludedIds=8352%2C8353%2C4082&country=US&type=MILITARY&accountId=67d1dd27d7732a41eb64d141&name=&tags=RESERVIST
+
+Response JSON:
+[
+    {
+        "id": 4075,
+        "idExtended": "4075",
+        "name": "Army National Guard",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4076,
+        "idExtended": "4076",
+        "name": "Army Reserve",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4079,
+        "idExtended": "4079",
+        "name": "Air National Guard",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4080,
+        "idExtended": "4080",
+        "name": "Air Force Reserve",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4078,
+        "idExtended": "4078",
+        "name": "Navy Reserve",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4077,
+        "idExtended": "4077",
+        "name": "Marine Corps Forces Reserve",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    },
+    {
+        "id": 4081,
+        "idExtended": "4081",
+        "name": "Coast Guard Reserve",
+        "country": "US",
+        "type": "MILITARY",
+        "latitude": 39.7837304,
+        "longitude": -100.445882
+    }
+]

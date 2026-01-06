@@ -1,0 +1,83 @@
+{
+  "lesser_known_living_medal_of_honor_recipients": [
+    {
+      "name": "John Baca",
+      "rank": "Specialist Four",
+      "branch": "US Army",
+      "conflict": "Vietnam War",
+      "notable_action": "During a night ambush patrol, he threw himself on an enemy grenade to shield fellow soldiers, surviving the blast.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "Donald E. Ballard",
+      "rank": "Hospital Corpsman Second Class",
+      "branch": "US Navy",
+      "conflict": "Vietnam War",
+      "notable_action": "In 1968, treated wounded Marines under fire and covered a grenade with his body before it failed to detonate, then continued medical care.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "Dwight W. Birdwell",
+      "rank": "Specialist Five",
+      "branch": "US Army",
+      "conflict": "Vietnam War",
+      "notable_action": "Defended his unit’s position under heavy enemy fire, manning exposed weapons and covering the evacuation of wounded personnel.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "Frederick E. Ferguson",
+      "rank": "Warrant Officer",
+      "branch": "US Army",
+      "conflict": "Vietnam War",
+      "notable_action": "Flew a helicopter repeatedly into intense enemy fire to evacuate wounded troops from a besieged outpost.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "James P. Fleming",
+      "rank": "Captain",
+      "branch": "US Air Force",
+      "conflict": "Vietnam War",
+      "notable_action": "Piloted a helicopter into a small clearing under fire to rescue a surrounded Special Forces team, narrowly avoiding a crash.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "Harold A. Fritz",
+      "rank": "First Lieutenant",
+      "branch": "US Army",
+      "conflict": "Vietnam War",
+      "notable_action": "Led a small armored convoy ambushed by a much larger enemy force, reorganizing survivors and leading a breakout while wounded.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "Allan J. Kellogg Jr.",
+      "rank": "Gunnery Sergeant",
+      "branch": "US Marine Corps",
+      "conflict": "Vietnam War",
+      "notable_action": "Smothered an enemy grenade with his body to save fellow Marines, surviving with severe injuries.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "Allen J. Lynch",
+      "rank": "Specialist Fourth Class",
+      "branch": "US Army",
+      "conflict": "Vietnam War",
+      "notable_action": "Rescued three wounded soldiers under heavy fire, then stayed behind to protect them and repel enemy attacks.",
+      "perceived_fame_level": "low_public_profile"
+    },
+    {
+      "name": "Gary B. Beikirch",
+      "rank": "Sergeant",
+      "branch": "US Army",
+      "conflict": "Vietnam War",
+      "notable_action": "As a Special Forces medic, repeatedly crossed open ground under intense fire to treat and evacuate wounded Montagnard and US troops.",
+      "perceived_fame_level": "low_public_profile"
+    }
+  ],
+  "notes": {
+    "selection_criteria": "Names drawn from official living Medal of Honor recipient lists, prioritizing recipients who are not widely recognized in mainstream global media.",
+    "primary_sources": [
+      "Official and compiled lists of living Medal of Honor recipients that show 61 living recipients as of 2025.",
+      "Biographical summaries of individual recipients from Medal of Honor and valor award reference sites."
+    ]
+  }
+}
