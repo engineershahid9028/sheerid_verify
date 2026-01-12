@@ -46,10 +46,33 @@ class Database:
         cursor.close()
         conn.close()
 
-    # ✅ Check if user exists
+    # Check if user exists
     def user_exists(self, telegram_id):
         conn = self.get_connection()
         cursor = conn.cursor()
 
         cursor.execute(
             "SELECT id FROM users WHERE telegram_id=%s",
+            (telegram_id,)
+        )
+
+        result = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+
+        return result is not None
+
+    # Add new user
+    def add_user(self, telegram_id, username):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "INSERT IGNORE INTO users (telegram_id, username) VALUES (%s, %s)",
+            (telegram_id, username)
+        )
+
+        conn.commit()
+        cursor.close()
+        conn.close()
