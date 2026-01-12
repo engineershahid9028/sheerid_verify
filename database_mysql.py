@@ -38,6 +38,8 @@ class Database:
             id INT AUTO_INCREMENT PRIMARY KEY,
             telegram_id BIGINT UNIQUE,
             username VARCHAR(255),
+            full_name VARCHAR(255),
+            invited_by BIGINT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
         """)
@@ -63,16 +65,25 @@ class Database:
 
         return result is not None
 
-    # Add new user
-    def add_user(self, telegram_id, username):
+    # Create new user (used by start command)
+    def create_user(self, telegram_id, username, full_name, invited_by=None):
         conn = self.get_connection()
         cursor = conn.cursor()
 
         cursor.execute(
-            "INSERT IGNORE INTO users (telegram_id, username) VALUES (%s, %s)",
-            (telegram_id, username)
+            """
+            INSERT IGNORE INTO users (telegram_id, username, full_name, invited_by)
+            VALUES (%s, %s, %s, %s)
+            """,
+            (telegram_id, username, full_name, invited_by)
         )
 
         conn.commit()
         cursor.close()
         conn.close()
+
+        return True
+
+    # Optional helper
+    def add_user(self, telegram_id, username):
+        return self.create_user(telegram_id, username, None, None)
