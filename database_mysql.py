@@ -6,7 +6,7 @@ class Database:
 
         db_port = os.getenv("DB_PORT")
         if not db_port or not db_port.isdigit():
-            db_port = "3306"   # safe fallback
+            db_port = "3306"
 
         self.config = {
             "host": os.getenv("DB_HOST"),
@@ -45,3 +45,11 @@ class Database:
         conn.commit()
         cursor.close()
         conn.close()
+
+    # ✅ Check if user exists
+    def user_exists(self, telegram_id):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "SELECT id FROM users WHERE telegram_id=%s",
